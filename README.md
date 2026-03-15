@@ -52,17 +52,20 @@ Users can write journal entries, select a nature ambience, and receive emotional
 - Groq API Key (free at [https://console.groq.com](https://console.groq.com))
 
 ### Backend Setup
+
 ```bash
 cd backend
 cp .env.example .env
 ```
 
 Add your API key inside `.env`:
+
 ```env
 GROQ_API_KEY=your_api_key
 ```
 
 Install dependencies and start server:
+
 ```bash
 npm install
 node server.js
@@ -73,6 +76,7 @@ Backend runs on: `http://localhost:3001`
 ---
 
 ### Frontend Setup
+
 ```bash
 cd frontend
 npm install
@@ -86,6 +90,7 @@ Frontend runs on: `http://localhost:3000`
 ## 🐳 Docker Setup
 
 Run the full application with a single command:
+
 ```bash
 GROQ_API_KEY=your_key docker-compose up --build
 ```
