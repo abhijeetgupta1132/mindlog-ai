@@ -10,8 +10,8 @@ Users can write journal entries, select a nature ambience, and receive emotional
 
 | | Link |
 |---|---|
-| 🌐 Frontend (Web App) | [https://mindlog-ai.vercel.app](https://mindlog-ai.vercel.app) |
-| ⚙️ Backend API | [https://mindlog-ai-6s0s.onrender.com/api](https://mindlog-ai-6s0s.onrender.com/api) |
+| 🌐 Frontend | [mindlog-ai.vercel.app](https://mindlog-ai.vercel.app) |
+| ⚙️ Backend API | [mindlog-ai-6s0s.onrender.com/api](https://mindlog-ai-6s0s.onrender.com/api) |
 | 💻 Source Code | [GitHub Repository](https://github.com/abhijeetgupta1132/mindlog-ai) |
 
 ---
@@ -31,15 +31,15 @@ Users can write journal entries, select a nature ambience, and receive emotional
 
 ## 🏗 Tech Stack
 
-| Layer           | Technology                        |
-|-----------------|-----------------------------------|
-| Frontend        | React                             |
-| Backend         | Node.js + Express                 |
-| Database        | SQLite (better-sqlite3)           |
-| AI Model        | Groq API (llama-3.1-8b-instant)   |
-| Caching         | node-cache (TTL 1 hour)           |
-| Deployment      | Vercel + Render                   |
-| Containerization| Docker                            |
+| Layer            | Technology                       |
+|------------------|----------------------------------|
+| Frontend         | React                            |
+| Backend          | Node.js + Express                |
+| Database         | SQLite (better-sqlite3)          |
+| AI Model         | Groq API (llama-3.1-8b-instant)  |
+| Caching          | node-cache (TTL 1 hour)          |
+| Deployment       | Vercel + Render                  |
+| Containerization | Docker                           |
 
 ---
 
@@ -49,23 +49,20 @@ Users can write journal entries, select a nature ambience, and receive emotional
 
 - Node.js 20+
 - npm
-- Groq API Key (free at [https://console.groq.com](https://console.groq.com))
+- Groq API Key (free at https://console.groq.com)
 
 ### Backend Setup
-
 ```bash
 cd backend
 cp .env.example .env
 ```
 
 Add your API key inside `.env`:
-
 ```env
 GROQ_API_KEY=your_api_key
 ```
 
 Install dependencies and start server:
-
 ```bash
 npm install
 node server.js
@@ -76,7 +73,6 @@ Backend runs on: `http://localhost:3001`
 ---
 
 ### Frontend Setup
-
 ```bash
 cd frontend
 npm install
@@ -90,7 +86,6 @@ Frontend runs on: `http://localhost:3000`
 ## 🐳 Docker Setup
 
 Run the full application with a single command:
-
 ```bash
 GROQ_API_KEY=your_key docker-compose up --build
 ```
@@ -145,7 +140,7 @@ Returns all journal entries for a specific user.
 ### Streaming Emotion Analysis (SSE)
 `POST /api/journal/analyze/stream`
 
-Returns real-time emotion analysis using Server-Sent Events. The response streams token-by-token as the LLM generates output.
+Returns real-time emotion analysis using Server-Sent Events. Streams token-by-token as the LLM generates output.
 
 **Request body:**
 ```json
@@ -156,13 +151,11 @@ Returns real-time emotion analysis using Server-Sent Events. The response stream
 ```
 
 **SSE Response stream:**
-```
 data: {"token": "The"}
 data: {"token": " emotion"}
 data: {"token": " detected"}
 ...
 data: [DONE]
-```
 
 ---
 
@@ -193,7 +186,7 @@ data: [DONE]
 
 ## 👨‍💻 Author
 
-**Abhijeet Gupta**  
-Computer Engineering Graduate · Full-Stack Developer  
-📧 abhijeetgupta1132@gmail.com  
+**Abhijeet Gupta**
+Computer Engineering Graduate · Full-Stack Developer
+📧 abhijeetgupta1132@gmail.com
 🔗 [LinkedIn](https://linkedin.com/in/abhijeet-gupta-807876381) · [GitHub](https://github.com/abhijeetgupta1132)
