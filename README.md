@@ -186,7 +186,7 @@ data: [DONE]
 
 ## 👨‍💻 Author
 
-**Abhijeet Gupta**
-Computer Engineering Graduate · Full-Stack Developer
-📧 abhijeetgupta1132@gmail.com
+**Abhijeet Gupta**  
+Computer Engineering Graduate · Full-Stack Developer  
+📧 abhijeetgupta1132@gmail.com  
 🔗 [LinkedIn](https://linkedin.com/in/abhijeet-gupta-807876381) · [GitHub](https://github.com/abhijeetgupta1132)
