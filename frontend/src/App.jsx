@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "https://mindlog-ai-backend.onrender.com/api";
+const API = "https://mindlog-ai-6s0s.onrender.com/api";
 
 const AMBIENCE = {
   forest: {
