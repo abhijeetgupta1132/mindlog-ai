@@ -14,10 +14,10 @@
 
 ## 🔗 Live Links
 
-| | |
-|---|---|
-| 🌐 **Frontend** | [mindlog-ai.vercel.app](https://mindlog-ai.vercel.app) |
-| ⚙️ **Backend API** | [mindlog-ai-6s0s.onrender.com/api](https://mindlog-ai-6s0s.onrender.com/api) |
+|                    |                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| 🌐 **Frontend**    | [mindlog-ai.vercel.app](https://mindlog-ai.vercel.app)                                     |
+| ⚙️ **Backend API** | [mindlog-ai-6s0s.onrender.com/api](https://mindlog-ai-6s0s.onrender.com/api)               |
 | 💻 **Source Code** | [github.com/abhijeetgupta1132/mindlog-ai](https://github.com/abhijeetgupta1132/mindlog-ai) |
 
 ---
@@ -34,15 +34,15 @@
 
 > The AI detects the emotional state of each journal entry and responds with an emoji, label, insight summary, and relevant keywords.
 
-| 🌲 Forest · 🕊️ Peace | 🏔️ Mountain · 😤 Overwhelmed |
-|---|---|
-| ![Peace](docs/screenshots/screenshot_2_peace.png) | ![Overwhelmed](docs/screenshots/screenshot_3_overwhelmed.png) |
+![Journal Entries - Overwhelm & Calm](docs/screenshots/screenshot_2_journal_entries.png)
 
-| 🌊 Ocean · 😟 Anxious | 🌲 Forest · 😔 Melancholy |
-|---|---|
-| ![Anxious](docs/screenshots/screenshot_4_anxious.png) | ![Melancholy](docs/screenshots/screenshot_5_melancholy.png) |
+![Journal Entries - Anxious & Melancholy](docs/screenshots/screenshot_3_anxious_melancholy.png)
 
 ---
+
+### 📊 Wellness Insights Dashboard
+
+![Insights Dashboard](docs/screenshots/screenshot_4_insights.png)
 
 ## ✨ Features
 
@@ -85,28 +85,28 @@ Express API (Node.js / Render)
 
 ## 🧠 Engineering Decisions
 
-| Decision | Rationale |
-|---|---|
-| **SSE over WebSockets** | AI output is strictly server → client. SSE is HTTP-native, simpler to implement, and requires no extra infrastructure. |
+| Decision                   | Rationale                                                                                                                    |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **SSE over WebSockets**    | AI output is strictly server → client. SSE is HTTP-native, simpler to implement, and requires no extra infrastructure.       |
 | **SQLite over PostgreSQL** | Zero config, file-based, perfectly suited for single-user journaling. PostgreSQL noted as upgrade path for multi-user scale. |
-| **node-cache over Redis** | Eliminates infra overhead for MVP scope. Identical interface makes Redis a drop-in upgrade when needed. |
-| **Groq over OpenAI** | ~10x faster inference on llama-3.1-8b-instant. Free tier sufficient for demo scale. Lower latency improves streaming UX. |
-| **Docker Compose** | Single-command setup lowers environment friction for contributors and interviewers running locally. |
+| **node-cache over Redis**  | Eliminates infra overhead for MVP scope. Identical interface makes Redis a drop-in upgrade when needed.                      |
+| **Groq over OpenAI**       | ~10x faster inference on llama-3.1-8b-instant. Free tier sufficient for demo scale. Lower latency improves streaming UX.     |
+| **Docker Compose**         | Single-command setup lowers environment friction for contributors and interviewers running locally.                          |
 
 ---
 
 ## 🏛️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React |
-| Backend | Node.js + Express |
-| Database | SQLite (better-sqlite3) |
-| AI Model | Groq API — llama-3.1-8b-instant |
-| Caching | node-cache (TTL: 1 hour) |
-| Streaming | Server-Sent Events (SSE) |
-| Deployment | Vercel (frontend) + Render (backend) |
-| Containerization | Docker + docker-compose |
+| Layer            | Technology                           |
+| ---------------- | ------------------------------------ |
+| Frontend         | React                                |
+| Backend          | Node.js + Express                    |
+| Database         | SQLite (better-sqlite3)              |
+| AI Model         | Groq API — llama-3.1-8b-instant      |
+| Caching          | node-cache (TTL: 1 hour)             |
+| Streaming        | Server-Sent Events (SSE)             |
+| Deployment       | Vercel (frontend) + Render (backend) |
+| Containerization | Docker + docker-compose              |
 
 ---
 
@@ -160,9 +160,9 @@ Run the entire application — frontend + backend — with a single command:
 GROQ_API_KEY=your_key docker-compose up --build
 ```
 
-| Service | URL |
-|---|---|
-| Frontend | http://localhost:3000 |
+| Service     | URL                   |
+| ----------- | --------------------- |
+| Frontend    | http://localhost:3000 |
 | Backend API | http://localhost:3001 |
 
 ---
@@ -186,6 +186,7 @@ Returns all journal entries for a specific user.
 ### `POST /api/journal/analyze` — Analyze Emotion
 
 **Request:**
+
 ```json
 {
   "text": "I felt calm today.",
@@ -194,6 +195,7 @@ Returns all journal entries for a specific user.
 ```
 
 **Response:**
+
 ```json
 {
   "emotion": "calm",
