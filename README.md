@@ -1,5 +1,6 @@
 # 🌿 MindLog AI — AI-Assisted Nature Journal
 
+[![CI](https://github.com/abhijeetgupta1132/mindlog-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/abhijeetgupta1132/mindlog-ai/actions/workflows/ci.yml)
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
@@ -54,6 +55,10 @@
 - 📊 **Insights dashboard** — top emotion, favourite ambience, recurring keywords
 - 🔒 **Rate-limited API** for stability and abuse prevention
 - 🐳 **Docker + docker-compose** — entire app runs with a single command
+
+## ⚠️ Current scope and privacy
+
+MindLog AI is a portfolio MVP, not a production mental-health service. The current API accepts a caller-provided `userId` and does not yet implement authentication or per-user authorization. Do not store private or sensitive journal content in the public demo. Authentication, encrypted storage, deletion controls, and a production privacy review are required before real-world multi-user use.
 
 ---
 
@@ -234,24 +239,36 @@ data: [DONE]
 ```
 mindlog-ai/
 ├── frontend/
-│   ├── src/
-│   │   ├── components/       # React UI components
-│   │   ├── pages/            # Journal, Insights, Dashboard
-│   │   └── App.js
-│   └── package.json
+│   ├── src/App.jsx           # Journal and insights interface
+│   ├── src/index.js          # React entry point
+│   └── package.json          # Frontend dependencies and scripts
 ├── backend/
-│   ├── server.js             # Express entry point
-│   ├── routes/               # API route handlers
-│   ├── services/
-│   │   ├── groqService.js    # LLM + SSE streaming logic
-│   │   └── cacheService.js   # node-cache wrapper
-│   ├── db/                   # SQLite schema + queries
-│   └── .env.example
+│   ├── server.js             # Express routes and SSE endpoint
+│   ├── llm.js                # Groq integration and response cache
+│   ├── db.js                 # SQLite schema and connection
+│   ├── validation.js         # Journal input validation
+│   ├── test/                 # Node test suite
+│   └── .env.example          # Environment-variable template
 ├── docs/
 │   └── screenshots/          # README screenshots
+├── .github/workflows/ci.yml  # Tests and frontend build
 ├── docker-compose.yml
+├── ARCHITECTURE.md
 └── README.md
 ```
+
+---
+
+## 🧪 Tests and CI
+
+Run the backend validation tests:
+
+```bash
+cd backend
+npm test
+```
+
+GitHub Actions installs both applications, runs the backend test suite, and creates a production frontend build on every push and pull request.
 
 ---
 
@@ -275,9 +292,3 @@ Computer Engineering Graduate · Full-Stack Developer
 📧 [abhijeetgupta1134@gmail.com](mailto:abhijeetgupta1134@gmail.com)
 🔗 [LinkedIn](https://www.linkedin.com/in/abhijeet-gupta-807876381)
 💻 [GitHub](https://github.com/abhijeetgupta1132)
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).

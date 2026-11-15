@@ -4,6 +4,7 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const db = require("./db");
 const { analyzeEmotion } = require("./llm");
+const { validateJournalInput } = require("./validation");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -37,23 +38,8 @@ app.get("/health", (req, res) => res.json({ status: "ok" }));
 // ── POST /api/journal ── Create entry
 app.post("/api/journal", (req, res) => {
   const { userId, ambience, text } = req.body;
-
-  if (!userId || !ambience || !text) {
-    return res
-      .status(400)
-      .json({ error: "userId, ambience, and text are required." });
-  }
-
-  const validAmbiences = ["forest", "ocean", "mountain"];
-  if (!validAmbiences.includes(ambience.toLowerCase())) {
-    return res
-      .status(400)
-      .json({ error: `ambience must be one of: ${validAmbiences.join(", ")}` });
-  }
-
-  if (text.trim().length < 5) {
-    return res.status(400).json({ error: "text is too short." });
-  }
+  const validationError = validateJournalInput({ userId, ambience, text });
+  if (validationError) return res.status(400).json({ error: validationError });
 
   const stmt = db.prepare(
     "INSERT INTO journal_entries (userId, ambience, text) VALUES (?, ?, ?)",
